@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+
 class c_industry {
   final String N_industry;
   final double Price_for_year;
   final int C_ID;
   final String C_SN;
   final int E_ID;
-  final E_SN;
+  final String E_SN;
 
   c_industry({
     required this.N_industry,
@@ -15,3 +17,10 @@ class c_industry {
     required this.E_SN,
   });
 }
+
+final N_industryController = TextEditingController();
+final PriceForYearController = TextEditingController();
+final C_IDController = TextEditingController();
+final C_SNController = TextEditingController();
+final E_IDController = TextEditingController();
+final E_SNController = TextEditingController();

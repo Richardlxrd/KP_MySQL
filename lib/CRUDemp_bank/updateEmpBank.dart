@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mysql/CRUDemp_bank/createEmpBank.dart';
 import 'package:kp_mysql/mysql/APIconnection.dart';
 
-class editDataWidget extends StatefulWidget {
-  const editDataWidget({super.key});
+import 'emp_bankClasses.dart';
+
+class editEmpDataDataWidget extends StatefulWidget {
+  const editEmpDataDataWidget({super.key});
 
   @override
-  State<editDataWidget> createState() => _editDataWidgetState();
+  State<editEmpDataDataWidget> createState() => _editEmpDataDataState();
 }
 
-class _editDataWidgetState extends State<editDataWidget> {
+class _editEmpDataDataState extends State<editEmpDataDataWidget> {
   Future<void> updateDataEmpBank(
       int ID, String eSn, String eFn, String eMn, String Position) async {
     final db = Mysql();

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Customers {
   final int ID;
   final String C_FN;
@@ -16,3 +18,11 @@ class Customers {
       required this.Leading_ID,
       required this.E_SN});
 }
+
+final IDController = TextEditingController();
+final C_FNController = TextEditingController();
+final C_MNController = TextEditingController();
+final C_SNController = TextEditingController();
+final Income_mlnController = TextEditingController();
+final Leading_IDController = TextEditingController();
+final E_SNController = TextEditingController();

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mysql/CRUDemp_bank/createEmpBank.dart';
+import 'package:kp_mysql/CRUDemp_bank/emp_bankClasses.dart';
 import 'package:kp_mysql/mysql/APIconnection.dart';
 
-class deleteDataWidget extends StatefulWidget {
-  const deleteDataWidget({super.key});
+class deleteEmpDataDataWidget extends StatefulWidget {
+  const deleteEmpDataDataWidget({super.key});
 
   @override
-  State<deleteDataWidget> createState() => _deleteDataWidgetState();
+  State<deleteEmpDataDataWidget> createState() =>
+      _deleteEmpDataDataWidgetState();
 }
 
-class _deleteDataWidgetState extends State<deleteDataWidget> {
+class _deleteEmpDataDataWidgetState extends State<deleteEmpDataDataWidget> {
   Future<void> deleteDataEmpBank(
     int ID,
   ) async {

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mysql/mysql/APIconnection.dart';
 
-class AddDataWidget extends StatefulWidget {
+import 'emp_bankClasses.dart';
+
+class createEmpBank extends StatefulWidget {
   @override
-  State<AddDataWidget> createState() => _AddDataWidgetState();
+  State<createEmpBank> createState() => _createEmpBankState();
 }
 
-class _AddDataWidgetState extends State<AddDataWidget> {
+class _createEmpBankState extends State<createEmpBank> {
   Future<void> insertDataEmpBank(
       int ID, String E_SN, String E_FN, String E_MN, String Position) async {
     final db = Mysql();
@@ -68,9 +70,3 @@ class _AddDataWidgetState extends State<AddDataWidget> {
     );
   }
 }
-
-final IDController = TextEditingController();
-final E_SNController = TextEditingController();
-final E_FNController = TextEditingController();
-final E_MNController = TextEditingController();
-final PositionController = TextEditingController();

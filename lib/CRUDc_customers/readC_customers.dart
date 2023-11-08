@@ -68,6 +68,7 @@ class _Show_customers_data extends State<Show_customers_data> {
                   Text(customers.C_MN),
                   Text(customers.C_SN),
                   Text('${customers.Income_mln}'),
+                  Text('${customers.Leading_ID}'),
                   Text(customers.E_SN),
                 ]),
               ],

@@ -16,10 +16,8 @@ class emp_bank {
   });
 }
 
-class empBankControllers {
-  final IDController = TextEditingController();
-  final E_SNController = TextEditingController();
-  final E_FNController = TextEditingController();
-  final E_MNController = TextEditingController();
-  final PositionController = TextEditingController();
-}
+final IDController = TextEditingController();
+final E_SNController = TextEditingController();
+final E_FNController = TextEditingController();
+final E_MNController = TextEditingController();
+final PositionController = TextEditingController();
