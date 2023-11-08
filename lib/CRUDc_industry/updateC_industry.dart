@@ -23,7 +23,7 @@ class _editC_industryDataWidgetState extends State<editC_industryDataWidget> {
 
     await db.getConnection().then((conn) async {
       await conn.query(
-          'UPDATE c_industry SET N_industry = ?, Price for year = ?, C_SN = ?, E_ID = ?, E_SN = ? WHERE C_ID = ?',
+          'UPDATE c_industry SET N_industry = ?, Price_for_year = ?, C_SN = ?, E_ID = ?, E_SN = ? WHERE C_ID = ?',
           [N_industry, Price_for_year, C_ID, C_SN, E_ID, E_SN]);
       await conn.close();
     });
@@ -62,10 +62,11 @@ class _editC_industryDataWidgetState extends State<editC_industryDataWidget> {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
+                final C_ID = int.parse(C_IDController.text);
                 final N_industry = N_industryController.text;
                 final Price_for_year =
                     double.parse(PriceForYearController.text);
-                final C_ID = int.parse(C_IDController.text);
+
                 final C_SN = C_SNController.text;
                 final E_ID = int.parse(E_IDController.text);
                 final E_SN = E_SNController.text;

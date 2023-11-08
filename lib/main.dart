@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mysql/Widgets/NavigationWidgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,18 +20,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(), body: Placeholder());
+    return Scaffold(appBar: AppBar(), body: NavigationRailWidget());
   }
 }

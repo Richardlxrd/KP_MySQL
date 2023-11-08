@@ -3,7 +3,7 @@ import 'package:kp_mysql/CRUDemp_bank/createEmpBank.dart';
 import 'package:kp_mysql/CRUDemp_bank/readEmpBank.dart';
 import 'package:kp_mysql/CRUDemp_bank/updateEmpBank.dart';
 
-import '../CRUDemp_bank/deleteEmpBank.dart';
+import 'deleteEmpBank.dart';
 
 class ShowEmpBankDataWidget extends StatefulWidget {
   const ShowEmpBankDataWidget({super.key});
@@ -18,7 +18,7 @@ class _ShowEmpBankDataWidgetState extends State<ShowEmpBankDataWidget> {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: <Widget>[
           SizedBox(width: 550, child: Show_emp_bank_data()),
           OverflowBar(
             children: [
@@ -35,7 +35,6 @@ class _ShowEmpBankDataWidgetState extends State<ShowEmpBankDataWidget> {
                     },
                     child: Text('Create')),
               ),
-              OutlinedButton(onPressed: () {}, child: Text('Read')),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: OutlinedButton(

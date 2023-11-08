@@ -20,7 +20,7 @@ class _createC_industryState extends State<createC_industry> {
 
     await db.getConnection().then((conn) async {
       await conn.query(
-          'INSERT INTO c_industry (N_industry, Price for year, C_ID, C_SN, E_ID, E_SN) VALUES (?, ?, ?, ?, ?, ?)',
+          'INSERT INTO c_industry (N_industry, Price_for_year, C_ID, C_SN, E_ID, E_SN) VALUES (?, ?, ?, ?, ?, ?)',
           [N_industry, Price_for_year, C_ID, C_SN, E_ID, E_SN]);
       await conn.close();
     });

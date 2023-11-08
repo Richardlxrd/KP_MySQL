@@ -14,7 +14,7 @@ class _createCustomersState extends State<createCustomers> {
 
     await db.getConnection().then((conn) async {
       await conn.query(
-          'INSERT INTO customers (ID, C_FN, C_MN, Income_mln, Leading_ID, E_SN) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          'INSERT INTO customers (ID, C_FN, C_MN, C_SN, Income_mln, Leading_ID, E_SN) VALUES (?, ?, ?, ?, ?, ?, ?)',
           [ID, C_FN, C_MN, C_SN, Income_mln, Leading_ID, E_SN]);
       await conn.close();
     });

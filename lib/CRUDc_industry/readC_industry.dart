@@ -2,38 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kp_mysql/CRUDc_industry/c_industryClasses.dart';
 import 'package:kp_mysql/mysql/APIconnection.dart';
 
-Future<List<c_industry>> show_c_industry() async {
-  var db = Mysql();
-
-  String sql = 'select * from 282_strahov.c_industry;';
-
-  final List<c_industry> mylist = [];
-
-  await db.getConnection().then((conn) async {
-    await conn.query(sql).then((results) {
-      for (var res in results) {
-        final c_industry mySQLdata = c_industry(
-          N_industry: res['N_industry'],
-          Price_for_year: res['Price for year'].toDouble(),
-          C_ID: res['C_ID'].toInt(),
-          C_SN: res['C_SN'],
-          E_ID: res['E_ID'].toInt(),
-          E_SN: res['E_SN'],
-        );
-        mylist.add(mySQLdata);
-      }
-    }).onError((error, stackTrace) {
-      print(error);
-
-      return null;
-    });
-
-    conn.close();
-  });
-
-  return mylist;
-}
-
 class Show_c_industry_data extends StatefulWidget {
   const Show_c_industry_data({super.key});
 
@@ -76,4 +44,36 @@ class _Show_c_industry_data extends State<Show_c_industry_data> {
       },
     );
   }
+}
+
+Future<List<c_industry>> show_c_industry() async {
+  var db = Mysql();
+
+  String sql = 'select * from 282_strahov.c_industry;';
+
+  final List<c_industry> mylist = [];
+
+  await db.getConnection().then((conn) async {
+    await conn.query(sql).then((results) {
+      for (var res in results) {
+        final c_industry mySQLdata = c_industry(
+          N_industry: res['N_industry'],
+          Price_for_year: res['Price_for_year'].toDouble(),
+          C_ID: res['C_ID'].toInt(),
+          C_SN: res['C_SN'],
+          E_ID: res['E_ID'].toInt(),
+          E_SN: res['E_SN'],
+        );
+        mylist.add(mySQLdata);
+      }
+    }).onError((error, stackTrace) {
+      print(error);
+
+      return null;
+    });
+
+    conn.close();
+  });
+
+  return mylist;
 }

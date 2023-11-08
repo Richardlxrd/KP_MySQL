@@ -18,7 +18,7 @@ class _editCustomersDataWidgetState extends State<editCustomersDataWidget> {
     await db.getConnection().then((conn) async {
       await conn.query(
           'UPDATE customers SET C_FN = ?, C_MN = ?, C_SN = ?, Income_mln = ?, Leading_ID = ?, E_SN = ? WHERE ID = ?',
-          [ID, C_FN, C_MN, C_SN, Income_mln, Leading_ID, E_SN]);
+          [C_FN, C_MN, C_SN, Income_mln, Leading_ID, E_SN, ID]);
       await conn.close();
     });
   }
@@ -71,7 +71,7 @@ class _editCustomersDataWidgetState extends State<editCustomersDataWidget> {
                 updateDataCustomers(
                     ID, C_FN, C_MN, C_SN, Income_mln, Leading_ID, E_SN);
               },
-              child: Text('Add Data'),
+              child: Text('Update Data'),
             ),
           ),
           OutlinedButton(
