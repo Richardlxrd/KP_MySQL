@@ -19,7 +19,7 @@ class _ShowEmpBankDataWidgetState extends State<ShowEmpBankDataWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(width: 550, child: Show_emp_bank_data()),
+          Show_emp_bank_data(),
           OverflowBar(
             children: [
               Padding(

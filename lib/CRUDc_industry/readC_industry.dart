@@ -20,26 +20,35 @@ class _Show_c_industry_data extends State<Show_c_industry_data> {
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: snapshot.data!.length,
-          itemBuilder: (context, index) {
-            final c_industry = snapshot.data![index];
-
-            return Table(
-              border: TableBorder.all(color: Colors.black, width: 0.5),
-              children: <TableRow>[
-                TableRow(children: [
-                  Text(c_industry.N_industry),
-                  Text('${c_industry.Price_for_year}'),
-                  Text('${c_industry.C_ID}'),
-                  Text(c_industry.C_SN),
-                  Text('${c_industry.E_ID}'),
-                  Text(c_industry.E_SN),
-                ]),
-              ],
-            );
-          },
+        return SingleChildScrollView(
+          child: DataTable(
+            columns: <DataColumn>[
+              DataColumn(label: Text('N_Industry')),
+              DataColumn(label: Text('Price_for_year')),
+              DataColumn(label: Text('C_ID')),
+              DataColumn(label: Text('C_SN')),
+              DataColumn(
+                label: Text('E_ID'),
+              ),
+              DataColumn(
+                label: Text('E_SN'),
+              ),
+            ],
+            rows: snapshot.data!.map((bank) {
+              return DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('${bank.Price_for_year}')),
+                  DataCell(Text('${bank.Price_for_year}')),
+                  DataCell(Text('${bank.C_ID}')),
+                  DataCell(Text(bank.C_SN)),
+                  DataCell(
+                    Text('${bank.E_ID}'),
+                  ),
+                  DataCell(Text(bank.E_SN))
+                ],
+              );
+            }).toList(),
+          ),
         );
       },
     );

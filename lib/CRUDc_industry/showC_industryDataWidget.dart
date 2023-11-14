@@ -19,7 +19,7 @@ class _ShowC_industryDataWidgetState extends State<ShowC_industryDataWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(width: 550, child: Show_c_industry_data()),
+          Show_c_industry_data(),
           OverflowBar(
             children: [
               Padding(

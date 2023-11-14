@@ -19,7 +19,7 @@ class _ShowCustomersDataWidgetState extends State<ShowCustomersDataWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(width: 550, child: Show_customers_data()),
+          Show_customers_data(),
           OverflowBar(
             children: [
               Padding(

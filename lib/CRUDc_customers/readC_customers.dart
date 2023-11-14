@@ -53,27 +53,37 @@ class _Show_customers_data extends State<Show_customers_data> {
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: snapshot.data!.length,
-          itemBuilder: (context, index) {
-            final customers = snapshot.data![index];
-
-            return Table(
-              border: TableBorder.all(color: Colors.black, width: 0.5),
-              children: <TableRow>[
-                TableRow(children: [
-                  Text('${customers.ID}'),
-                  Text(customers.C_FN),
-                  Text(customers.C_MN),
-                  Text(customers.C_SN),
-                  Text('${customers.Income_mln}'),
-                  Text('${customers.Leading_ID}'),
-                  Text(customers.E_SN),
-                ]),
-              ],
-            );
-          },
+        return SingleChildScrollView(
+          child: DataTable(
+            columns: <DataColumn>[
+              DataColumn(label: Text('ID')),
+              DataColumn(label: Text('C_FN')),
+              DataColumn(label: Text('C_MN')),
+              DataColumn(label: Text('C_SN')),
+              DataColumn(
+                label: Text('Income_mln'),
+              ),
+              DataColumn(
+                label: Text('Leading_ID'),
+              ),
+              DataColumn(label: Text('E_SN'))
+            ],
+            rows: snapshot.data!.map((bank) {
+              return DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('${bank.ID}')),
+                  DataCell(Text(bank.C_FN)),
+                  DataCell(Text(bank.C_MN)),
+                  DataCell(Text(bank.C_SN)),
+                  DataCell(
+                    Text('${bank.Income_mln}'),
+                  ),
+                  DataCell(Text('${bank.Leading_ID}')),
+                  DataCell(Text(bank.E_SN))
+                ],
+              );
+            }).toList(),
+          ),
         );
       },
     );

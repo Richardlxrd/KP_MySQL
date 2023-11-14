@@ -20,25 +20,31 @@ class _Show_emp_bank_data extends State<Show_emp_bank_data> {
         } else if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         }
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: snapshot.data!.length,
-          itemBuilder: (context, index) {
-            final bank = snapshot.data![index];
-
-            return Table(
-              border: TableBorder.all(color: Colors.black, width: 0.5),
-              children: <TableRow>[
-                TableRow(children: [
-                  Text('${bank.ID}'),
-                  Text(bank.E_SN),
-                  Text(bank.E_FN),
-                  Text(bank.E_MN),
-                  Text(bank.Position),
-                ]),
-              ],
-            );
-          },
+        return SingleChildScrollView(
+          child: DataTable(
+            columns: <DataColumn>[
+              DataColumn(label: Text('ID')),
+              DataColumn(label: Text('Фамилия')),
+              DataColumn(label: Text('Имя')),
+              DataColumn(label: Text('Отчество')),
+              DataColumn(
+                label: Text('Должность'),
+              ),
+            ],
+            rows: snapshot.data!.map((bank) {
+              return DataRow(
+                cells: <DataCell>[
+                  DataCell(Text('${bank.ID}')),
+                  DataCell(Text(bank.E_SN)),
+                  DataCell(Text(bank.E_FN)),
+                  DataCell(Text(bank.E_MN)),
+                  DataCell(
+                    Text(bank.Position),
+                  ),
+                ],
+              );
+            }).toList(),
+          ),
         );
       },
     );
