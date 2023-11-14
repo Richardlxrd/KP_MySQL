@@ -66,7 +66,7 @@ class _editEmpDataDataState extends State<editEmpDataDataWidget> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Closedas'))
+              child: Text('Closed'))
         ],
       ),
     );
