@@ -46,7 +46,7 @@ class _editEmpDataDataState extends State<editEmpDataDataWidget> {
           ),
           TextField(
             controller: PositionController,
-            decoration: InputDecoration(labelText: 'Position'),
+            decoration: InputDecoration(labelText: 'Positions'),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
