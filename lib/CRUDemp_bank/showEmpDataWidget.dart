@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mysql/CRUDemp_bank/createEmpBank.dart';
 import 'package:kp_mysql/CRUDemp_bank/readEmpBank.dart';
+import 'package:kp_mysql/CRUDemp_bank/sortEmpBank.dart';
 import 'package:kp_mysql/CRUDemp_bank/updateEmpBank.dart';
 
 import 'deleteEmpBank.dart';
@@ -19,7 +20,7 @@ class _ShowEmpBankDataWidgetState extends State<ShowEmpBankDataWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Show_emp_bank_data(),
+          Flexible(flex: 1, child: Show_emp_bank_data()),
           OverflowBar(
             children: [
               Padding(
@@ -67,6 +68,18 @@ class _ShowEmpBankDataWidgetState extends State<ShowEmpBankDataWidget> {
                   child: Icon(
                     Icons.update_outlined,
                   ),
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return show_sorted_emp_data();
+                      });
+                },
+                child: Icon(
+                  Icons.sort_by_alpha_outlined,
                 ),
               )
             ],

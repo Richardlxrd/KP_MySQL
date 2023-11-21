@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:kp_mysql/CRUDc_industry/c_industryClasses.dart';
 import 'package:kp_mysql/mysql/APIconnection.dart';
 
-class Show_c_industry_data extends StatefulWidget {
-  const Show_c_industry_data({super.key});
+class Show_sorted_c_industry_data extends StatefulWidget {
+  const Show_sorted_c_industry_data({super.key});
 
   @override
-  State<Show_c_industry_data> createState() => _Show_c_industry_data();
+  State<Show_sorted_c_industry_data> createState() =>
+      _Show_sorted_c_industry_data();
 }
 
-class _Show_c_industry_data extends State<Show_c_industry_data> {
+class _Show_sorted_c_industry_data extends State<Show_sorted_c_industry_data> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<c_industry>>(
-      future: show_c_industry(),
+      future: sort_c_industry(),
       builder: (BuildContext context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
@@ -55,10 +56,11 @@ class _Show_c_industry_data extends State<Show_c_industry_data> {
   }
 }
 
-Future<List<c_industry>> show_c_industry() async {
+Future<List<c_industry>> sort_c_industry() async {
   var db = Mysql();
 
-  String sql = 'select * from 282_strahov.c_industry;';
+  String sql =
+      'select * from 282_strahov.c_industry UNION SELECT * FROM `c_industry` ORDER BY `C_ID` ASC;';
 
   final List<c_industry> mylist = [];
 
@@ -85,4 +87,25 @@ Future<List<c_industry>> show_c_industry() async {
   });
 
   return mylist;
+}
+
+class show_sorted_c_industry_data extends StatelessWidget {
+  const show_sorted_c_industry_data({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Column(children: [
+        Expanded(child: Show_sorted_c_industry_data()),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: OutlinedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Close')),
+        )
+      ]),
+    );
+  }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kp_mysql/CRUDc_customers/createC_customers.dart';
 import 'package:kp_mysql/CRUDc_customers/deleteC_customers.dart';
 import 'package:kp_mysql/CRUDc_customers/readC_customers.dart';
+import 'package:kp_mysql/CRUDc_customers/sortC_Customers.dart';
 import 'package:kp_mysql/CRUDc_customers/updateC_customers.dart';
 
 class ShowCustomersDataWidget extends StatefulWidget {
@@ -19,7 +20,7 @@ class _ShowCustomersDataWidgetState extends State<ShowCustomersDataWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Show_customers_data(),
+          Flexible(flex: 1, child: Show_customers_data()),
           OverflowBar(
             children: [
               Padding(
@@ -67,6 +68,18 @@ class _ShowCustomersDataWidgetState extends State<ShowCustomersDataWidget> {
                   child: Icon(
                     Icons.update_outlined,
                   ),
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return show_sorted_customers_data();
+                      });
+                },
+                child: Icon(
+                  Icons.sort_by_alpha_outlined,
                 ),
               )
             ],

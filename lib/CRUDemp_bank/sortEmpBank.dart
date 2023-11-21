@@ -1,19 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:kp_mysql/CRUDemp_bank/emp_bankClasses.dart';
 import 'package:kp_mysql/mysql/APIconnection.dart';
-import 'package:flutter/material.dart';
 
-class Show_emp_bank_data extends StatefulWidget {
-  const Show_emp_bank_data({super.key});
+class sort_emp_bank_data extends StatefulWidget {
+  const sort_emp_bank_data({super.key});
 
   @override
-  State<Show_emp_bank_data> createState() => _Show_emp_bank_data();
+  State<sort_emp_bank_data> createState() => _sort_emp_bank_data();
 }
 
-class _Show_emp_bank_data extends State<Show_emp_bank_data> {
-  Future<List<emp_bank>> show_emp_bank() async {
+class _sort_emp_bank_data extends State<sort_emp_bank_data> {
+  Future<List<emp_bank>> sort_emp_bank() async {
     var db = Mysql();
 
-    String sql = 'select * from 282_strahov.emp_bank;';
+    String sql =
+        'select * from 282_strahov.emp_bank UNION SELECT * FROM `emp_bank` ORDER BY `ID` ASC;';
 
     final List<emp_bank> mylist = [];
 
@@ -29,10 +30,6 @@ class _Show_emp_bank_data extends State<Show_emp_bank_data> {
           );
           mylist.add(mySQLdata);
         }
-      }).onError((error, stackTrace) {
-        print(error);
-
-        return null;
       });
 
       conn.close();
@@ -44,7 +41,7 @@ class _Show_emp_bank_data extends State<Show_emp_bank_data> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<emp_bank>>(
-      future: show_emp_bank(),
+      future: sort_emp_bank(),
       builder: (BuildContext context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
@@ -78,6 +75,27 @@ class _Show_emp_bank_data extends State<Show_emp_bank_data> {
           ),
         );
       },
+    );
+  }
+}
+
+class show_sorted_emp_data extends StatelessWidget {
+  const show_sorted_emp_data({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Column(children: [
+        Expanded(child: sort_emp_bank_data()),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: OutlinedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Close')),
+        )
+      ]),
     );
   }
 }

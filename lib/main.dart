@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Colors.black),
+        primaryColor: Colors.black,
       ),
+      darkTheme: ThemeData(),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
@@ -27,6 +28,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(), body: NavigationRailWidget());
+    return Scaffold(body: NavigationRailWidget());
   }
 }

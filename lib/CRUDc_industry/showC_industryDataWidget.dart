@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kp_mysql/CRUDc_industry/createC_industry.dart';
 import 'package:kp_mysql/CRUDc_industry/deleteC_industry.dart';
 import 'package:kp_mysql/CRUDc_industry/readC_industry.dart';
+import 'package:kp_mysql/CRUDc_industry/sortC_industry.dart';
 import 'package:kp_mysql/CRUDc_industry/updateC_industry.dart';
 
 class ShowC_industryDataWidget extends StatefulWidget {
@@ -19,7 +20,7 @@ class _ShowC_industryDataWidgetState extends State<ShowC_industryDataWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Show_c_industry_data(),
+          Flexible(flex: 1, child: Show_c_industry_data()),
           OverflowBar(
             children: [
               Padding(
@@ -67,6 +68,18 @@ class _ShowC_industryDataWidgetState extends State<ShowC_industryDataWidget> {
                   child: Icon(
                     Icons.update_outlined,
                   ),
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return show_sorted_c_industry_data();
+                      });
+                },
+                child: Icon(
+                  Icons.sort_by_alpha_outlined,
                 ),
               )
             ],
